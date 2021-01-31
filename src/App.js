@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Education from './components/Education'
+
 
 class App extends Component {
   constructor(){
@@ -6,7 +8,11 @@ class App extends Component {
 
     this.state = {
       firstname: '',
-      lastname: ''
+      lastname: '',
+      phonenumber: '',
+      email: '',
+      education: [
+      ]
 
     }
 
@@ -28,10 +34,46 @@ class App extends Component {
 
   }
 
+  handlePhoneNumberChange = (event) => {
+    this.setState({
+      phonenumber: event.target.value
+
+    })
+
+  }
+
+  handleEmailChange = (event) => {
+    this.setState({
+      email: event.target.value
+
+    })
+
+  }
+
+  addEducation = () => {
+    const newEducation = this.state.education;
+    newEducation.push({
+      id: newEducation.length + 1,
+      value: ''
+    });
+    this.setState({
+      education: newEducation
+    }, console.log(this.state.education));
+  }
+
+  handleEducationChange = (e, index) => {
+    const newData = this.state.education;
+    newData[index].value = e.target.value;
+    this.setState({
+      education: newData
+    }, console.log(this.state.education))
+
+
+  }
+
   render() {
     return (
       <div>
-        <form>
           <div>
             <label>First Name</label>
             <input
@@ -48,8 +90,31 @@ class App extends Component {
               onChange={this.handleLastnameChange}
 
             />
+
+            <label>Phone Number</label>
+            <input
+              type="text"
+              value={this.state.phonenumber}
+              onChange={this.handlePhoneNumberChange}
+
+            />
+
+            <label>Email Address</label>
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.handleEmailChange}
+
+            />
+            
           </div>
-        </form>
+            {this.state.education.map((item, index) => 
+            <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
+            <button onClick={this.addEducation.bind(this)}>Add</button>
+          <div>
+
+
+          </div>
       </div>
     )
   }
