@@ -5,13 +5,19 @@ export default function Education(props) {
     <table>
         <thead>
         <tr>
-            <th>School</th>
+            <th>Name of University</th>
+            <th>Location</th>
+            
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>
-            <input onChange={props.onChange}/>
+            <input type="text" name="institution" onChange={props.onChange}/>
+            </td>
+
+            <td>
+            <input type="text" name="location" onChange={props.onChange}/>
             </td>
         </tr>
         </tbody>

@@ -11,8 +11,9 @@ class App extends Component {
       lastname: '',
       phonenumber: '',
       email: '',
-      education: [
-      ]
+      education: [],
+      experience: []
+
 
     }
 
@@ -53,17 +54,21 @@ class App extends Component {
   addEducation = () => {
     const newEducation = this.state.education;
     newEducation.push({
-      id: newEducation.length + 1,
-      value: ''
+      id: newEducation.length + 1
     });
     this.setState({
       education: newEducation
-    }, console.log(this.state.education));
+    });
   }
 
   handleEducationChange = (e, index) => {
     const newData = this.state.education;
-    newData[index].value = e.target.value;
+    
+    newData[index] = [{
+      ...newData[index][0],
+      [e.target.name]: e.target.value
+    }]
+
     this.setState({
       education: newData
     }, console.log(this.state.education))
@@ -107,11 +112,11 @@ class App extends Component {
 
             />
             
-          </div>
-            {this.state.education.map((item, index) => 
-            <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
-            <button onClick={this.addEducation.bind(this)}>Add</button>
-          <div>
+            </div>
+              {this.state.education.map((item, index) => 
+              <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
+              <button onClick={this.addEducation.bind(this)}>Add</button>
+            <div>
 
 
           </div>
