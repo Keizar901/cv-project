@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function Education(props) {
+export default function Experience(props) {
     return (
-    <table>
+        <table>
         <thead>
         <tr>
-            <th>Name of University</th>
-            <th>Major</th>
+            <th>Name of Company</th>
+            <th>Role</th>
             <th>Location</th>
             
         </tr>
@@ -14,11 +14,11 @@ export default function Education(props) {
         <tbody>
         <tr>
             <td>
-            <input type="text" name="institution" onChange={props.onChange}/>
+            <input type="text" name="company" onChange={props.onChange}/>
             </td>
 
             <td>
-            <input type="text" name="major" onChange={props.onChange}/>
+            <input type="text" name="role" onChange={props.onChange}/>
             </td>
 
             <td>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Education from './components/Education'
+import Experience from './components/Experience'
 
 
 class App extends Component {
@@ -16,6 +17,11 @@ class App extends Component {
 
 
     }
+
+    this.addEducation = this.addEducation.bind(this);
+    this.addExperience = this.addExperience.bind(this);
+    this.removeEducation = this.removeEducation.bind(this);
+    this.removeExperience = this.removeExperience.bind(this);
 
   }
 
@@ -61,6 +67,16 @@ class App extends Component {
     });
   }
 
+  removeEducation = () => {
+    const newEducation = this.state.education;
+    newEducation.splice(newEducation.length - 1, 1);
+
+    this.setState({
+      education: newEducation
+
+    });
+  }
+
   handleEducationChange = (e, index) => {
     const newData = this.state.education;
     
@@ -71,9 +87,42 @@ class App extends Component {
 
     this.setState({
       education: newData
-    }, console.log(this.state.education))
+    })
 
 
+  }
+
+  addExperience = () => {
+    const newExperience = this.state.experience;
+    newExperience.push({
+      id: newExperience.length + 1
+    });
+    this.setState({
+      experience: newExperience
+    });
+  }
+
+  removeExperience = () => {
+    const newExperience = this.state.experience;
+    newExperience.splice(newExperience.length - 1, 1);
+
+    this.setState({
+      experience: newExperience
+
+    });
+  }
+
+  handleExperienceChange = (e, index) => {
+    const newData = this.state.experience;
+    
+    newData[index] = [{
+      ...newData[index][0],
+      [e.target.name]: e.target.value
+    }]
+
+    this.setState({
+      experience: newData
+    })
   }
 
   render() {
@@ -115,9 +164,16 @@ class App extends Component {
             </div>
               {this.state.education.map((item, index) => 
               <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
-              <button onClick={this.addEducation.bind(this)}>Add</button>
+              <button onClick={this.addEducation}>Add</button>
+              <button onClick={this.removeEducation}>Remove</button>
             <div>
 
+            </div>
+              {this.state.experience.map((item, index) => 
+              <Experience key={index} value={item.value} onChange={e => this.handleExperienceChange(e, index)}/> )}
+              <button onClick={this.addExperience}>Add</button>
+              <button onClick={this.removeExperience}>Remove</button>
+            <div>
 
           </div>
       </div>
