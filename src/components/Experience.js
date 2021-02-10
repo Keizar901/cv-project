@@ -5,8 +5,10 @@ export default function Experience(props) {
         <table>
         <thead>
         <tr>
-            <th>Name of Company</th>
-            <th>Role</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Location</th>
             
         </tr>
@@ -18,7 +20,15 @@ export default function Experience(props) {
             </td>
 
             <td>
-            <input type="text" name="role" onChange={props.onChange}/>
+            <input type="text" name="title" onChange={props.onChange}/>
+            </td>
+
+            <td>
+            <input type="date" name="start" onChange={props.onChange}/>
+            </td>
+
+            <td>
+            <input type="date" name="end" onChange={props.onChange}/>
             </td>
 
             <td>

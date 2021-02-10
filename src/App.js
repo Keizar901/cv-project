@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Education from './components/Education'
 import Experience from './components/Experience'
+import './components/styles.css'
 
 
 class App extends Component {
@@ -87,7 +88,7 @@ class App extends Component {
 
     this.setState({
       education: newData
-    })
+    }, console.log(this.state.education))
 
 
   }
@@ -122,58 +123,60 @@ class App extends Component {
 
     this.setState({
       experience: newData
-    })
+    }, console.log(this.state.experience))
   }
 
   render() {
     return (
       <div>
           <div>
-            <label>First Name</label>
-            <input
-              type="text"
-              value={this.state.firstname}
-              onChange={this.handleFirstnameChange}
+            <div id="info">
+              <label>First Name</label>
+              <input
+                type="text"
+                value={this.state.firstname}
+                onChange={this.handleFirstnameChange}
 
-            />
+              />
 
-            <label>Last Name</label>
-            <input
-              type="text"
-              value={this.state.lastname}
-              onChange={this.handleLastnameChange}
+              <label>Last Name</label>
+              <input
+                type="text"
+                value={this.state.lastname}
+                onChange={this.handleLastnameChange}
 
-            />
+              />
 
-            <label>Phone Number</label>
-            <input
-              type="text"
-              value={this.state.phonenumber}
-              onChange={this.handlePhoneNumberChange}
+              <label>Phone Number</label>
+              <input
+                type="text"
+                value={this.state.phonenumber}
+                onChange={this.handlePhoneNumberChange}
 
-            />
+              />
 
-            <label>Email Address</label>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
+              <label>Email Address</label>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.handleEmailChange}
 
-            />
-            
+              />
             </div>
+            
+            <div id="education">
               {this.state.education.map((item, index) => 
               <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
               <button onClick={this.addEducation}>Add</button>
               <button onClick={this.removeEducation}>Remove</button>
-            <div>
-
             </div>
+
+            <div id="experience">
               {this.state.experience.map((item, index) => 
               <Experience key={index} value={item.value} onChange={e => this.handleExperienceChange(e, index)}/> )}
               <button onClick={this.addExperience}>Add</button>
               <button onClick={this.removeExperience}>Remove</button>
-            <div>
+            </div>
 
           </div>
       </div>
