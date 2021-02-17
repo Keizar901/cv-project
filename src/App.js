@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Education from './components/Education'
 import Experience from './components/Experience'
 import './components/styles.css'
+import { Link } from 'react-router-dom'
 
 
 class App extends Component {
@@ -88,7 +89,7 @@ class App extends Component {
 
     this.setState({
       education: newData
-    }, console.log(this.state.education))
+    })
 
 
   }
@@ -123,7 +124,7 @@ class App extends Component {
 
     this.setState({
       experience: newData
-    }, console.log(this.state.experience))
+    })
   }
 
   render() {
@@ -141,7 +142,7 @@ class App extends Component {
                 onChange={this.handleFirstnameChange}
 
               />
-              <break />
+              
               <label>Last Name</label>
               <input
                 type="text"
@@ -183,7 +184,15 @@ class App extends Component {
               <button onClick={this.removeExperience}>Remove</button>
             </div>
 
+            <Link to={{
+              pathname: '/Submit',
+              state: this.state
+            }}>
+                <button>Submit</button>
+            </Link>
+
           </div>
+          
       </div>
     )
   }
