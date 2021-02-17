@@ -1,11 +1,36 @@
 #info {
-    border-style: solid;
+    place-items: left;
 }
 
 #education {
-    border-style: solid;
+    place-items: left;
 }
 
 #experience {
-    border-style: solid;
+    place-items: left;
+}
+
+#main {
+    display: grid;
+    justify-content: left;
+    margin-left: 100px;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+
+.content {
+    flex: 0 1 200px;
+    margin: 20px;
+
+}
+
+button {
+    display: inline-block;
+    size: 100px;
+}
+
+label {
+    display: block;
+    padding-bottom: 5px;
+    padding-top: 20px;
 }

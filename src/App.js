@@ -129,8 +129,11 @@ class App extends Component {
   render() {
     return (
       <div>
-          <div>
-            <div id="info">
+          <div id="main">
+            <h1>Application Form</h1>
+
+            <div class="content" id="info">
+              <h2>Personal Information</h2>
               <label>First Name</label>
               <input
                 type="text"
@@ -138,7 +141,7 @@ class App extends Component {
                 onChange={this.handleFirstnameChange}
 
               />
-
+              <break />
               <label>Last Name</label>
               <input
                 type="text"
@@ -164,14 +167,16 @@ class App extends Component {
               />
             </div>
             
-            <div id="education">
+            <div class="content" id="education">
+            <h2>Education</h2>
               {this.state.education.map((item, index) => 
               <Education key={index} value={item.value} onChange={e => this.handleEducationChange(e, index)}/> )}
               <button onClick={this.addEducation}>Add</button>
               <button onClick={this.removeEducation}>Remove</button>
             </div>
 
-            <div id="experience">
+            <div class="content" id="experience">
+            <h2>Experience</h2>
               {this.state.experience.map((item, index) => 
               <Experience key={index} value={item.value} onChange={e => this.handleExperienceChange(e, index)}/> )}
               <button onClick={this.addExperience}>Add</button>
